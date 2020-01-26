@@ -5,7 +5,7 @@ using Location.Api.Models;
 
 namespace Location.Api.Infrastructure
 {
-    public class LocationContext
+    internal class LocationContext
     {
         private readonly IMongoDatabase database;
 

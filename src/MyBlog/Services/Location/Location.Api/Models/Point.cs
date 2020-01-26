@@ -1,13 +1,13 @@
 ﻿namespace Location.Api.Models
 {
-    public struct Point
+    public class Point
     {
+        public static readonly string GeoType = "Point";
+
         public Point(double longitude, double latitude)
         {
             Longitude = longitude;
             Latitude = latitude;
-
-            Type = "Point";
         }
 
         public double Longitude { get; }
@@ -16,6 +16,6 @@
 
         public double[] Coordinates() => new[] { Longitude, Latitude };
 
-        public string Type { get; }
+        public string Type { get; } = GeoType;
     }
 }
