@@ -5,11 +5,11 @@ using Location.Api.Models;
 
 namespace Location.Api.Infrastructure
 {
-    internal class LocationContext
+    internal class LocationsContext
     {
         private readonly IMongoDatabase database;
 
-        public LocationContext(IOptions<LocationSettings> options)
+        public LocationsContext(IOptions<LocationSettings> options)
         {
             var settings = options.Value;
             var client = new MongoClient(settings.ConnectionString);

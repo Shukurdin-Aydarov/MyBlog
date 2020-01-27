@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 
+using Location.Api.Infrastructure;
 using Location.Api.Infrastructure.Filters;
 
 namespace Location.Api
@@ -20,12 +21,17 @@ namespace Location.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers(options => options.Filters.Add<HttpGlobalExceptionFilter>());
+            HealthCheck.AddHelthChecks(services, Configuration);
+            services.AddControllers(options => options.Filters.Add<HttpGlobalExceptionFilter>())
+                    .AddNewtonsoftJson(options =>
+                    {
+                        options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                        JsonConvert.DefaultSettings = () => options.SerializerSettings;
+                    });
 
             services.Configure<LocationSettings>(Configuration);
 
             DependencyInjector.Inject(services);
-
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -34,7 +40,15 @@ namespace Location.Api
                 app.UseDeveloperExceptionPage();
 
             app.UseRouting()
-               .UseEndpoints(endpoints => endpoints.MapControllers());
+               .UseEndpoints(endpoints =>
+                {
+                    endpoints.MapControllers();
+
+                    HealthCheck.MapHealthChecks(endpoints);
+                });
+
+            new LocationsContextSeed(app).SeedAsync()
+                                        .Wait();
         }
     }
 }

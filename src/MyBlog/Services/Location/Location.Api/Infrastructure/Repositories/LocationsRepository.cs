@@ -11,11 +11,11 @@ namespace Location.Api.Infrastructure.Repositories
 {
     public class LocationsRepository : ILocationsRepository
     {
-        private readonly LocationContext context;
+        private readonly LocationsContext context;
 
         public LocationsRepository(IOptions<LocationSettings> options)
         {
-            context = new LocationContext(options);
+            context = new LocationsContext(options);
         }
 
         public async Task AddUserLocationAsync(UserLocation location)

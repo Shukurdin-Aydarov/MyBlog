@@ -4,18 +4,23 @@
     {
         public static readonly string GeoType = "Point";
 
+        public Point() { }
+
         public Point(double longitude, double latitude)
         {
             Longitude = longitude;
             Latitude = latitude;
+
+            coordinates = new[] { longitude, latitude };
         }
 
         public double Longitude { get; }
 
         public double Latitude { get; }
 
-        public double[] Coordinates() => new[] { Longitude, Latitude };
+        // GeoJson properties
+        public double[] coordinates { get; private set; }
 
-        public string Type { get; } = GeoType;
+        public string type { get; private set; } = GeoType;
     }
 }

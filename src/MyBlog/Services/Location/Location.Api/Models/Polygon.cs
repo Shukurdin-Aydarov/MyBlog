@@ -12,12 +12,12 @@ namespace Location.Api.Models
 
         public Polygon(IEnumerable<GeoJson2DGeographicCoordinates> coordinates)
         {
-           Coordinates = coordinates.Select(x => new[] { x.Longitude, x.Latitude })
-                                    .ToArray();
+           this.coordinates = coordinates.Select(x => new[] { x.Longitude, x.Latitude })
+                                         .ToArray();
         }
 
-        public string Type { get; } = GeoType;
+        public string type { get; private set; } = GeoType;
         
-        public double[][] Coordinates { get; }
+        public double[][] coordinates { get; private set; }
     }
 }

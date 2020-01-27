@@ -10,10 +10,10 @@ namespace Location.Api
     {
         public static void Inject(IServiceCollection services)
         {
-            services.AddScoped<IIdentityService, IdentityService>();
-            services.AddScoped<ILocationsService, LocationsService>();
-            services.AddScoped<ILocationsRepository, LocationsRepository>();
-            services.AddScoped<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient<ILocationsRepository, LocationsRepository>();
+            services.AddTransient<IIdentityService, IdentityService>();
+            services.AddTransient<ILocationsService, LocationsService>();
         }
     }
 }

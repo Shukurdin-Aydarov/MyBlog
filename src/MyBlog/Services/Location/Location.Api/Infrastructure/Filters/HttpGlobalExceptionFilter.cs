@@ -11,7 +11,7 @@ namespace Location.Api.Infrastructure.Filters
         private readonly ILogger logger;
         private readonly IWebHostEnvironment env;
 
-        public HttpGlobalExceptionFilter(IWebHostEnvironment env, ILogger logger)
+        public HttpGlobalExceptionFilter(IWebHostEnvironment env, ILogger<HttpGlobalExceptionFilter> logger)
         {
             this.env = env;
             this.logger = logger;

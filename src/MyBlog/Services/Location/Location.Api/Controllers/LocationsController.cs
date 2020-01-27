@@ -11,7 +11,7 @@ using Location.Api.Infrastructure.Services;
 
 namespace Location.Api.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("api/v1/[controller]")]
     public class LocationsController : ControllerBase
@@ -51,7 +51,7 @@ namespace Location.Api.Controllers
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> CreateOrUpdateUserLocationAsync([FromBody] Point newUserLocation)
         {
-            var userId = identityService.GetUserIdentity();
+            var userId = "user"; //identityService.GetUserIdentity();
             var result = await locationService.AddOrUpdateUserLocationAsync(userId, newUserLocation);
 
             if (!result) return BadRequest();
