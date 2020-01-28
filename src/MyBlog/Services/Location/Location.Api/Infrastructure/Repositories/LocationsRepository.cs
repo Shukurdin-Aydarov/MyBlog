@@ -42,7 +42,7 @@ namespace Location.Api.Infrastructure.Repositories
         {
             var point = GeoJson.Point(GeoJson.Geographic(currentPosition.Longitude, currentPosition.Latitude));
             var orderByDistanceQuery = new FilterDefinitionBuilder<Locations>().Near(x => x.Location, point);
-            var withinAreaQuery = new FilterDefinitionBuilder<Locations>().GeoIntersects(Polygon.GeoType, point);
+            var withinAreaQuery = new FilterDefinitionBuilder<Locations>().GeoIntersects(nameof(Locations.Polygon), point);
             var filter = Builders<Locations>.Filter.And(orderByDistanceQuery, withinAreaQuery);
             
             return await context.Locations

@@ -3,9 +3,10 @@ version: '3.4'
 services:
   nosqldata:
     ports:
-      - "27017"
+      - "27017:27017"
     volumes:
       - myblog-nosqldata:/data/db
+
   location.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development

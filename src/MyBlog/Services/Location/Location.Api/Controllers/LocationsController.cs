@@ -51,7 +51,7 @@ namespace Location.Api.Controllers
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> CreateOrUpdateUserLocationAsync([FromBody] Point newUserLocation)
         {
-            var userId = "user"; //identityService.GetUserIdentity();
+            var userId = identityService.GetUserIdentity();
             var result = await locationService.AddOrUpdateUserLocationAsync(userId, newUserLocation);
 
             if (!result) return BadRequest();

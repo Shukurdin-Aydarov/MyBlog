@@ -1,4 +1,6 @@
-﻿namespace Location.Api.Models
+﻿using Newtonsoft.Json;
+
+namespace Location.Api.Models
 {
     public class Point
     {
@@ -6,6 +8,7 @@
 
         public Point() { }
 
+        [JsonConstructor]
         public Point(double longitude, double latitude)
         {
             Longitude = longitude;

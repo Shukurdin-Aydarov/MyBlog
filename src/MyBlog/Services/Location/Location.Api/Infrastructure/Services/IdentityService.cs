@@ -5,8 +5,6 @@ namespace Location.Api.Infrastructure.Services
 {
     public class IdentityService : IIdentityService
     {
-        private static readonly string userIdentityClaimName = "sub";
-
         private readonly IHttpContextAccessor accessor;
 
         public IdentityService(IHttpContextAccessor accessor)
@@ -18,7 +16,7 @@ namespace Location.Api.Infrastructure.Services
         {
             return accessor.HttpContext
                            .User
-                           .FindFirst(userIdentityClaimName)
+                           .FindFirst(Constants.IdentityClaimName)
                            .Value;
         }
     }

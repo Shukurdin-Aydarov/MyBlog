@@ -1,12 +1,12 @@
-﻿using Location.Api.Models;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using MongoDB.Driver.GeoJsonObjectModel;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
+using Location.Api.Models;
 
 namespace Location.Api.Infrastructure
 {

@@ -39,7 +39,7 @@ namespace Location.Api.Infrastructure.Services
         {
             var currentUserRegions = await repository.GetCurrentUserRegionsAsync(currentPosition);
 
-            if (currentUserRegions is null)
+            if (currentUserRegions is null || currentUserRegions.Count() is 0)
                 throw new LocationDomainException("User current area not found.");
 
             var userLocation = await repository.GetUserLocationAsync(userId);

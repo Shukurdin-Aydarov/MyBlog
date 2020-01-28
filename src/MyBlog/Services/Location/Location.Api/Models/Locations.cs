@@ -2,7 +2,6 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver.GeoJsonObjectModel;
-using Newtonsoft.Json;
 
 namespace Location.Api.Models
 {
@@ -14,10 +13,10 @@ namespace Location.Api.Models
         public int LocationId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
+        
+        public Point Location { get; set; }
 
-        public Point Location { get; private set; }
-
-        public Polygon Polygon { get; private set; }
+        public Polygon Polygon { get; set; }
 
         [BsonRepresentation(BsonType.ObjectId)]
         public string ParentId { get; set; }
