@@ -8,7 +8,7 @@ namespace Location.Api
 {
     public static class DependencyInjector
     {
-        public static void Inject(IServiceCollection services)
+        public static void InjectDependencies(this IServiceCollection services)
         {
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<ILocationsRepository, LocationsRepository>();

@@ -21,17 +21,16 @@ namespace Location.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            HealthCheck.AddHelthChecks(services, Configuration);
-            services.AddControllers(options => options.Filters.Add<HttpGlobalExceptionFilter>())
+            services.ConfigureHelthChecks(Configuration)
+                    .AddControllers(options => options.Filters.Add<HttpGlobalExceptionFilter>())
                     .AddNewtonsoftJson(options =>
                     {
                         options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
                         JsonConvert.DefaultSettings = () => options.SerializerSettings;
                     });
 
-            services.Configure<LocationSettings>(Configuration);
-
-            DependencyInjector.Inject(services);
+            services.Configure<LocationSettings>(Configuration)
+                    .InjectDependencies();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -40,15 +39,15 @@ namespace Location.Api
                 app.UseDeveloperExceptionPage();
 
             app.UseRouting()
+               .UseSecurity()
                .UseEndpoints(endpoints =>
                 {
                     endpoints.MapControllers();
-
-                    HealthCheck.MapHealthChecks(endpoints);
+                    endpoints.MapHealthChecks();
                 });
 
             new LocationsContextSeed(app).SeedAsync()
-                                        .Wait();
+                                         .Wait();
         }
     }
 }

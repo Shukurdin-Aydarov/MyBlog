@@ -10,7 +10,7 @@ namespace Location.Api
 {
     public static class HealthCheck
     {
-        public static IServiceCollection AddHelthChecks(IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection ConfigureHelthChecks(this IServiceCollection services, IConfiguration configuration)
         {
             var hcBuilder = services.AddHealthChecks();
 
@@ -24,7 +24,7 @@ namespace Location.Api
             return services;
         }
 
-        public static IEndpointRouteBuilder MapHealthChecks(IEndpointRouteBuilder endpoints)
+        public static IEndpointRouteBuilder MapHealthChecks(this IEndpointRouteBuilder endpoints)
         {
             endpoints.MapHealthChecks("/hc", new HealthCheckOptions
             {
