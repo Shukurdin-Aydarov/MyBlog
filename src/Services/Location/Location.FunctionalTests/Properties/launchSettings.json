@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Location.FunctionalTests": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

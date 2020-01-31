@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  nosqldata:
+    image: mongo
+
+  location.api:
+    image: ${DOCKER_REGISTRY-}locationapi
+    build:
+      context: .
+      dockerfile: Services/Location/Location.Api/Dockerfile
+    depends_on:
+      - nosqldata
