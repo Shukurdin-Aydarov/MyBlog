@@ -3,20 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using SimpleEvenBus.Abstractions;
 
-using Location.Api.Models;
-using Location.Api.Infrastructure.Repositories;
+using MyBlog.Location.Api.Models;
+using MyBlog.Location.Api.Infrastructure.Repositories;
+using MyBlog.Location.Api.Infrastructure.Events;
 
-namespace Location.Api.Infrastructure.Services
+namespace MyBlog.Location.Api.Infrastructure.Services
 {
     public class LocationsService : ILocationsService
     {
-        private readonly ILocationsRepository repository;
         private readonly ILogger logger;
+        private readonly IEventBus eventBus;
+        private readonly ILocationsRepository repository;
 
-        public LocationsService(ILocationsRepository repository, ILogger<LocationsService> logger)
+        public LocationsService(ILocationsRepository repository, IEventBus eventBus, ILogger<LocationsService> logger)
         {
             this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
+            this.eventBus = eventBus ?? throw new ArgumentNullException(nameof(eventBus));
             this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
@@ -50,9 +54,29 @@ namespace Location.Api.Infrastructure.Services
 
             await repository.UpdateUserLocationAsync(userLocation);
 
-            //Publish event
+            PublishNewUserLocationPositionEvent(userId, currentUserRegions);
 
             return true;
+        }
+
+        private void PublishNewUserLocationPositionEvent(string userId, IEnumerable<Locations> newLocations)
+        {
+            var newUserLocations = MapUserLocationDetails(newLocations);
+            var @event = new UserLocationUpdatedEvent(userId, newUserLocations);
+
+            logger.LogInformation("----- Publishing integration event: {EventId} from {AppName} - ({@Event})", @event.Id, Program.AppName, @event);
+
+            eventBus.Publish(@event);
+        }
+
+        private IEnumerable<UserLocationDetails> MapUserLocationDetails(IEnumerable<Locations> locations)
+        {
+            return locations.Select(l => new UserLocationDetails
+            {
+                LocationId = l.LocationId,
+                Code = l.Code,
+                Description = l.Description
+            });
         }
     }
 }

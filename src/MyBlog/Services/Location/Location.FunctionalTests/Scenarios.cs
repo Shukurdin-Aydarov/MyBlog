@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Xunit;
 
-using Location.Api.Models;
-using Location.FunctionalTests.Middleware;
+using MyBlog.Location.Api.Models;
+using MyBlog.Location.FunctionalTests.Middleware;
 
-namespace Location.FunctionalTests
+namespace MyBlog.Location.FunctionalTests
 {
     public class Scenarios
     {

@@ -4,13 +4,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 
-using Location.Api;
-using Location.Api.Infrastructure;
-using Location.FunctionalTests.Middleware;
-using Location.Api.Infrastructure.Filters;
-using Location.Api.Controllers;
+using MyBlog.Location.Api;
+using MyBlog.Location.Api.Infrastructure;
+using MyBlog.Location.FunctionalTests.Middleware;
+using MyBlog.Location.Api.Infrastructure.Filters;
+using MyBlog.Location.Api.Controllers;
 
-namespace Location.FunctionalTests
+namespace MyBlog.Location.FunctionalTests
 {
     public class TestsStartup
     {

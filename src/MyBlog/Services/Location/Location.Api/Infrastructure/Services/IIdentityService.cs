@@ -1,4 +1,4 @@
-﻿namespace Location.Api.Infrastructure.Services
+﻿namespace MyBlog.Location.Api.Infrastructure.Services
 {
     public interface IIdentityService
     {

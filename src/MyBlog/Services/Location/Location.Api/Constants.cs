@@ -1,4 +1,4 @@
-﻿namespace Location.Api
+﻿namespace MyBlog.Location.Api
 {
     public static class Constants
     {

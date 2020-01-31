@@ -6,9 +6,9 @@ using MongoDB.Driver.GeoJsonObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
-using Location.Api.Models;
+using MyBlog.Location.Api.Models;
 
-namespace Location.Api.Infrastructure
+namespace MyBlog.Location.Api.Infrastructure
 {
     public class LocationsContextSeed
     {

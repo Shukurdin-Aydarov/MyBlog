@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 
-using Location.Api;
+using MyBlog.Location.Api;
 
-namespace Location.FunctionalTests.Middleware
+namespace MyBlog.Location.FunctionalTests.Middleware
 {
     internal class AuthorizeMiddleware
     {

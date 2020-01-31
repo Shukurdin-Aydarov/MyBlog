@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using MongoDB.Driver.GeoJsonObjectModel;
 
-namespace Location.Api.Models
+namespace MyBlog.Location.Api.Models
 {
     public class Polygon
     {
@@ -18,6 +18,7 @@ namespace Location.Api.Models
                                             .ToArray();
         }
 
+        // GeoJson properties
         public string type { get; private set; } = GeoType;
 
         public double[][][] coordinates { get; private set; }

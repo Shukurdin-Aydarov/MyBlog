@@ -5,9 +5,9 @@ using MongoDB.Driver;
 using MongoDB.Driver.GeoJsonObjectModel;
 using Microsoft.Extensions.Options;
 
-using Location.Api.Models;
+using MyBlog.Location.Api.Models;
 
-namespace Location.Api.Infrastructure.Repositories
+namespace MyBlog.Location.Api.Infrastructure.Repositories
 {
     public class LocationsRepository : ILocationsRepository
     {

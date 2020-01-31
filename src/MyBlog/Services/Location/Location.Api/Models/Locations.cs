@@ -3,7 +3,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver.GeoJsonObjectModel;
 
-namespace Location.Api.Models
+namespace MyBlog.Location.Api.Models
 {
     public class Locations
     {

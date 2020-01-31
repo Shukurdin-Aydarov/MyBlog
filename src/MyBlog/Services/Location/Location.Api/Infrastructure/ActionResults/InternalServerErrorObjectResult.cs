@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Location.Api.Infrastructure
+namespace MyBlog.Location.Api.Infrastructure
 {
     public class InternalServerErrorObjectResult : ObjectResult
     {

@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
-using Location.Api.Infrastructure.Services;
-using Location.Api.Infrastructure.Repositories;
+using MyBlog.Location.Api.Infrastructure.Services;
+using MyBlog.Location.Api.Infrastructure.Repositories;
 
-namespace Location.Api
+namespace MyBlog.Location.Api
 {
     public static class DependencyInjector
     {
@@ -14,6 +14,8 @@ namespace Location.Api
             services.AddTransient<ILocationsRepository, LocationsRepository>();
             services.AddTransient<IIdentityService, IdentityService>();
             services.AddTransient<ILocationsService, LocationsService>();
+
+            EventBusStartup.Configure(services);
         }
     }
 }

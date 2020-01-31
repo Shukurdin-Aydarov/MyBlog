@@ -5,10 +5,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 
-using Location.Api.Infrastructure;
-using Location.Api.Infrastructure.Filters;
+using MyBlog.Location.Api.Infrastructure;
+using MyBlog.Location.Api.Infrastructure.Filters;
 
-namespace Location.Api
+namespace MyBlog.Location.Api
 {
     public class Startup
     {

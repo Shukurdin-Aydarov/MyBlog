@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Location.Api.Models
+namespace MyBlog.Location.Api.Models
 {
     public class Point
     {

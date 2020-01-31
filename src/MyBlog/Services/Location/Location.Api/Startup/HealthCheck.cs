@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
-namespace Location.Api
+namespace MyBlog.Location.Api
 {
     public static class HealthCheck
     {
@@ -19,6 +19,11 @@ namespace Location.Api
                 configuration["ConnectionString"],
                 name: "locations-mongodb-check",
                 tags: new [] { "mongodb" }
+            );
+            hcBuilder.AddRabbitMQ(
+                $"amqp://{configuration["EventBus:HostName"]}",
+                name: "locations-rabbitmqbus-check",
+                tags: new [] { "rabbitmqbus" }
             );
 
             return services;

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Location.FunctionalTests
+﻿namespace MyBlog.Location.FunctionalTests
 {
     internal static class Api
     {

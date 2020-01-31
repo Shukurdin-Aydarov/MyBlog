@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-using Location.Api.Models;
-using Location.Api.Infrastructure.Services;
+using MyBlog.Location.Api.Models;
+using MyBlog.Location.Api.Infrastructure.Services;
 
-namespace Location.Api.Controllers
+namespace MyBlog.Location.Api.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("api/v1/[controller]")]
     public class LocationsController : ControllerBase

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Http;
 
-namespace Location.Api.Infrastructure.Services
+namespace MyBlog.Location.Api.Infrastructure.Services
 {
     public class IdentityService : IIdentityService
     {

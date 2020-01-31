@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
-using Location.Api.Models;
+using MyBlog.Location.Api.Models;
 
-namespace Location.Api.Infrastructure
+namespace MyBlog.Location.Api.Infrastructure
 {
     internal class LocationsContext
     {

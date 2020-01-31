@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-using Location.Api.Models;
+using MyBlog.Location.Api.Models;
 
-namespace Location.Api.Infrastructure.Services
+namespace MyBlog.Location.Api.Infrastructure.Services
 {
     public interface ILocationsService
     {

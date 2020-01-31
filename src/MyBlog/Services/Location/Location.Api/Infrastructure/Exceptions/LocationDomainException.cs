@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Location.Api.Infrastructure
+namespace MyBlog.Location.Api.Infrastructure
 {
     public class LocationDomainException : Exception
     {
